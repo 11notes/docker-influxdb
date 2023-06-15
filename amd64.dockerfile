@@ -1,5 +1,6 @@
 # :: Header
   FROM influxdb:2.7-alpine
+  ENV APP_ROOT=/influxdb
 
 # :: Run
   USER root
@@ -15,9 +16,9 @@
 
   # :: prepare image
     RUN set -ex; \
-      mkdir -p /influxdb; \
-      ln -s /etc/influxdb2 /influxdb/etc; \
-      ln -s /var/lib/influxdb2 /influxdb/var; \
+      mkdir -p ${APP_ROOT}; \
+      ln -s /etc/influxdb2 ${APP_ROOT}/etc; \
+      ln -s /var/lib/influxdb2 ${APP_ROOT}/var; \
       mv /entrypoint.sh /usr/local/bin;
 
   # :: copy root filesystem changes and add execution rights to init scripts
@@ -29,14 +30,14 @@
     RUN set -ex; \
       usermod -l docker influxdb; \
       groupmod -n docker influxdb; \
-      usermod -d /influxdb docker; \
+      usermod -d ${APP_ROOT} docker; \
       chown -R 1000:1000 \
-        /influxdb \
+        ${APP_ROOT} \
         /etc/influxdb2 \
         /var/lib/influxdb2;
 
 # :: Volumes
-  VOLUME ["/influxdb/etc", "/influxdb/var"]
+  VOLUME ["${APP_ROOT}/etc", "${APP_ROOT}/var"]
 
 # :: Monitor
   HEALTHCHECK CMD /usr/local/bin/healthcheck.sh || exit 1

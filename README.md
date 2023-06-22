@@ -1,10 +1,14 @@
 # Alpine :: InfluxDB
 Run InfluxDB based on Alpine Linux. Small, lightweight, secure and fast 🏔️
 
+## Volumes
+* **/influxdb/etc** - Directory of config.yml
+* **/influxdb/var** - Directory of all mutable data
+
 ## Run
 ```shell
 docker run --name influxdb \
-  -v .../etc:/influxdb/etc \
+  -v .../etc/config.yml:/influxdb/etc/config.yml \
   -v .../var:/influxdb/var \
   -d 11notes/influxdb:[tag]
 ```

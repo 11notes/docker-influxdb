@@ -17,8 +17,10 @@
   # :: prepare image
     RUN set -ex; \
       mkdir -p ${APP_ROOT}; \
-      ln -s /etc/influxdb2 ${APP_ROOT}/etc; \
-      ln -s /var/lib/influxdb2 ${APP_ROOT}/var; \
+      mkdir -p ${APP_ROOT}/etc; \
+      mkdir -p ${APP_ROOT}/var; \
+      rm -f /etc/defaults/influxdb2/config.yml; \
+      ln -s ${APP_ROOT}/etc/config.yml /etc/defaults/influxdb2/config.yml; \
       mv /entrypoint.sh /usr/local/bin;
 
   # :: copy root filesystem changes and add execution rights to init scripts
@@ -34,10 +36,11 @@
       chown -R 1000:1000 \
         ${APP_ROOT} \
         /etc/influxdb2 \
-        /var/lib/influxdb2;
+        /var/lib/influxdb2 \
+        /etc/defaults/influxdb2;
 
 # :: Volumes
-  VOLUME ["${APP_ROOT}/etc", "${APP_ROOT}/var"]
+  VOLUME ["${APP_ROOT}/var"]
 
 # :: Monitor
   HEALTHCHECK CMD /usr/local/bin/healthcheck.sh || exit 1

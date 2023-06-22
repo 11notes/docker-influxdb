@@ -1,0 +1,3 @@
+bolt-path: /influxdb/var/influxd.bolt
+engine-path: /influxdb/var/engine
+nats-port: 4222

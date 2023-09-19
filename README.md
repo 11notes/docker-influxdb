@@ -1,4 +1,6 @@
 # Alpine :: InfluxDB
+![pulls](https://img.shields.io/docker/pulls/11notes/influxdb?color=2b75d6) ![build](https://img.shields.io/docker/automated/11notes/influxdb?color=2b75d6) ![activity](https://img.shields.io/github/commit-activity/m/11notes/docker-influxdb?color=c91cb8) ![commit-last](https://img.shields.io/github/last-commit/11notes/docker-influxdb?color=c91cb8)
+
 Run InfluxDB based on Alpine Linux. Small, lightweight, secure and fast 🏔️
 
 ## Volumes
@@ -19,14 +21,16 @@ docker run --name influxdb \
 | `user` | docker | user docker |
 | `uid` | 1000 | user id 1000 |
 | `gid` | 1000 | group id 1000 |
+| `home` | /influxdb | home directory of user docker |
+| `config` | /influxdb/etc/config.yml | default config location |
 
 ## Parent
-* [influxdb:2.7-alpine](https://github.com/influxdata/influxdata-docker/tree/master/influxdb/2.7/alpine)
+* [influxdb:2.7.1-alpine](https://github.com/influxdata/influxdata-docker/blob/46221770aa619e97553bc95443954f6c4690e1ce/influxdb/2.7/alpine/Dockerfile)
 
 ## Built with
 * [influxdb](https://github.com/influxdata/influxdb)
 * [Alpine Linux](https://alpinelinux.org/)
 
 ## Tips
-* Don't bind to ports < 1024 (requires root), use NAT/reverse proxy
-* [Permanent Stroage](https://github.com/11notes/alpine-docker-netshare) - Module to store permanent container data via NFS/CIFS and more
+* Only use rootless container runtime (podman, rootless docker)
+* Don't bind to ports < 1024 (requires root), use NAT/reverse proxy (haproxy, traefik, nginx)

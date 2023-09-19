@@ -1,5 +1,5 @@
 # :: Header
-  FROM influxdb:2.7-alpine
+  FROM influxdb:2.7.1-alpine
   ENV APP_ROOT=/influxdb
 
 # :: Run

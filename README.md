@@ -1,5 +1,5 @@
 # Alpine :: InfluxDB
-![pulls](https://img.shields.io/docker/pulls/11notes/influxdb?color=2b75d6) ![build](https://img.shields.io/docker/automated/11notes/influxdb?color=2b75d6) ![activity](https://img.shields.io/github/commit-activity/m/11notes/docker-influxdb?color=c91cb8) ![commit-last](https://img.shields.io/github/last-commit/11notes/docker-influxdb?color=c91cb8)
+![size](https://img.shields.io/docker/image-size/11notes/influxdb/2.7.1?color=0eb305) ![version](https://img.shields.io/docker/v/11notes/influxdb?color=eb7a09) ![pulls](https://img.shields.io/docker/pulls/11notes/influxdb?color=2b75d6) ![activity](https://img.shields.io/github/commit-activity/m/11notes/docker-influxdb?color=c91cb8) ![commit-last](https://img.shields.io/github/last-commit/11notes/docker-influxdb?color=c91cb8)
 
 Run InfluxDB based on Alpine Linux. Small, lightweight, secure and fast 🏔️
 

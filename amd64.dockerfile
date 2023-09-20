@@ -7,12 +7,12 @@
 
   # :: update image
     RUN set -ex; \
-      apk --update --no-cache add \
+      apk --no-cache add \
         curl \
         tzdata \
         shadow; \
-      apk update; \
-      apk upgrade;
+      apk --no-cache upgrade; \
+      apk cache clear;
 
   # :: prepare image
     RUN set -ex; \

@@ -22,6 +22,7 @@ docker run --name influxdb \
 | `uid` | 1000 | user id 1000 |
 | `gid` | 1000 | group id 1000 |
 | `home` | /influxdb | home directory of user docker |
+| `web` | https://${IP}:8086 | default web ui |
 | `config` | /influxdb/etc/config.yml | default config location |
 
 ## Parent

@@ -10,15 +10,16 @@
       apk --no-cache add \
         curl \
         tzdata \
-        shadow; \
-      apk --no-cache upgrade; \
-      apk cache clear;
+        shadow \
+        openssl; \
+      apk --no-cache upgrade;
 
   # :: prepare image
     RUN set -ex; \
       mkdir -p ${APP_ROOT}; \
       mkdir -p ${APP_ROOT}/etc; \
       mkdir -p ${APP_ROOT}/var; \
+      mkdir -p ${APP_ROOT}/ssl; \
       rm -f /etc/defaults/influxdb2/config.yml; \
       ln -s ${APP_ROOT}/etc/config.yml /etc/defaults/influxdb2/config.yml; \
       mv /entrypoint.sh /usr/local/bin;
@@ -47,4 +48,4 @@
 
 # :: Start
 	USER docker
-  ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+  ENTRYPOINT ["/usr/local/bin/entrypoint.custom.sh"]

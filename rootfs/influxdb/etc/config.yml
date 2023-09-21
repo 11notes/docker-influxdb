@@ -1,3 +1,4 @@
 bolt-path: /influxdb/var/influxd.bolt
 engine-path: /influxdb/var/engine
-nats-port: 4222
+tls-cert: "/influxdb/ssl/cert.pem"
+tls-key: "/influxdb/ssl/key.pem"
